@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --BGCOLOR: #e4e2dd;
+  --MAINCOLOR: #db4a2b;
+  --SECONDCOLOR: #232323;
+}
+
+#root {
+  font-family: "Archivo", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.sidebar {
+  list-style-type: none;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+}
+
+.links {
+  list-style-type: none;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 10px;
+  width: 100%;
+  gap: 10px;
+}
+
+.links button {
+  height: 30px;
+  width: 100px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.side-icon {
+  width: 75px;
+  height: 75px;
+  color: #e4e2dd;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.default-logo {
+  display: flex;
+  justify-content: start;
+  width: 90px;
+  height: 90px;
+  margin: 5px 0 0 5px;
+  border: 1px solid var(--SECONDCOLOR);
+  border-radius: 50px;
+}
+
+.hidden {
+  display: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1px;
+  background-color: var(--MAINCOLOR);
+  height: 100px;
+}
+
+.menu-bars {
+  margin-left: 2rem;
+  background-color: var(--MAINCOLOR);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-toggle {
+  list-style-type: none;
+}
+
+.nav-menu {
+  background-color: var(--SECONDCOLOR);
+  width: 250px;
+
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+  left: -100%;
+  transition: 250ms linear;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 250ms linear;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: var(--SECONDCOLOR);
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons.homepage {
+  color: var(--BGCOLOR);
+}
