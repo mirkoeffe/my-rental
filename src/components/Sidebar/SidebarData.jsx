@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import "./Navbar/style.css";
+import "./styles.css";
 
-function SidebarData() {
+function SidebarData({ onCityClick }) {
   return (
     <ul className="sidebar">
       <li className="sidebar-links">
-        <Link to="/about">Berlin</Link>
+        <button onClick={() => onCityClick("Berlin")}>Berlin</button>
       </li>
       <li className="sidebar-links">
-        <Link to="/contact">Madrid</Link>
+        <button onClick={() => onCityClick("Madrid")}>Madrid</button>
       </li>
       <li className="sidebar-links">
-        <Link to="/rentals">Paris</Link>
+        <button onClick={() => onCityClick("Paris")}>Paris</button>
       </li>
     </ul>
   );

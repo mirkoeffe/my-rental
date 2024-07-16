@@ -17,7 +17,6 @@ function About() {
           voluptate sunt dolorum nam. Harum dignissimos quaerat placeat. Sint,
           quibusdam deleniti.
         </p>
-        <img src="" alt="" />
       </div>
     </div>
   );

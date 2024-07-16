@@ -1,0 +1,13 @@
+:root {
+  --BGCOLOR: #e4e2dd;
+  --MAINCOLOR: #db4a2b;
+  --SECONDCOLOR: #232323;
+}
+
+.sidebar {
+  list-style-type: none;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+}

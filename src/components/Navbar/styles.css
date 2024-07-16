@@ -11,14 +11,6 @@
   font-optical-sizing: auto;
 }
 
-.sidebar {
-  list-style-type: none;
-}
-
-.sidebar-links a {
-  text-decoration: none;
-}
-
 .links {
   list-style-type: none;
   display: flex;

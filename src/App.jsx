@@ -7,7 +7,7 @@ import Contact from "./pages/Contact";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
 import Rentals from "./pages/Rentals";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/index.jsx";
 
 import "./App.css";
 

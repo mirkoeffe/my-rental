@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
-import SidebarData from "../SidebarData";
-
+import SidebarData from "../Sidebar/SidebarData";
 import Logo from "../../assets/my.png";
+import "./styles.css";
 
-import "./style.css";
-
-function Navbar() {
+function Navbar({ onCityClick }) {
   const [sidebar, setSidebar] = useState(false);
   const [hideLogo, setHideLogo] = useState(false);
   const location = useLocation();
-
   const isHomepage = location.pathname === "/";
 
   const toggleSidebar = () => {
@@ -29,6 +26,9 @@ function Navbar() {
       case "/":
         return (
           <>
+            <Link to="/rentals">
+              <button className="nav-buttons">Rentals</button>
+            </Link>
             <Link to="/about">
               <button className="nav-buttons">About</button>
             </Link>
@@ -40,6 +40,9 @@ function Navbar() {
       case "/about":
         return (
           <>
+            <Link to="/rentals">
+              <button className="nav-buttons">Rentals</button>
+            </Link>
             <Link to="/">
               <button className="nav-buttons homepage">Homepage</button>
             </Link>
@@ -51,11 +54,28 @@ function Navbar() {
       case "/contact":
         return (
           <>
+            <Link to="/rentals">
+              <button className="nav-buttons">Rentals</button>
+            </Link>
             <Link to="/about">
               <button className="nav-buttons">About</button>
             </Link>
             <Link to="/">
               <button className="nav-buttons homepage">Homepage</button>
+            </Link>
+          </>
+        );
+      case "/rentals":
+        return (
+          <>
+            <Link to="/">
+              <button className="nav-buttons homepage">Homepage</button>
+            </Link>
+            <Link to="/about">
+              <button className="nav-buttons">About</button>
+            </Link>
+            <Link to="/contact">
+              <button className="nav-buttons">Contacts</button>
             </Link>
           </>
         );
@@ -88,7 +108,12 @@ function Navbar() {
         <div className="links">{renderButtons()}</div>
       </div>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-        <SidebarData />
+        <SidebarData
+          onCityClick={(city) => {
+            onCityClick(city);
+            toggleSidebar();
+          }}
+        />
       </nav>
     </>
   );

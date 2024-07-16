@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --BGCOLOR: #e4e2dd;
+  --MAINCOLOR: #db4a2b;
+  --SECONDCOLOR: #232323;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footer-icon {
+  height: 20px;
+  width: auto;
+  margin-top: 5px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--MAINCOLOR);
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: var(--BGCOLOR);
+}
