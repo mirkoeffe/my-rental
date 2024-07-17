@@ -9,7 +9,8 @@ function Navbar({ onCityClick }) {
   const [sidebar, setSidebar] = useState(false);
   const [hideLogo, setHideLogo] = useState(false);
   const location = useLocation();
-  const isHomepage = location.pathname === "/";
+  const isTheRightPage =
+    location.pathname === "/" || location.pathname === "/rentals";
 
   const toggleSidebar = () => {
     if (!sidebar) {
@@ -79,6 +80,23 @@ function Navbar({ onCityClick }) {
             </Link>
           </>
         );
+      case "/filter/:city":
+        return (
+          <>
+            <Link to="/">
+              <button className="nav-buttons homepage">Homepage</button>
+            </Link>
+            <Link to="/rentals">
+              <button className="nav-buttons">Rentals</button>
+            </Link>
+            <Link to="/about">
+              <button className="nav-buttons">About</button>
+            </Link>
+            <Link to="/contact">
+              <button className="nav-buttons">Contacts</button>
+            </Link>
+          </>
+        );
       default:
         return null;
     }
@@ -88,8 +106,8 @@ function Navbar({ onCityClick }) {
     <>
       <div className="navbar">
         <div
-          className={`logo ${isHomepage ? "pointer" : ""}`}
-          onClick={isHomepage ? toggleSidebar : null}
+          className={`logo ${isTheRightPage ? "pointer" : ""}`}
+          onClick={isTheRightPage ? toggleSidebar : null}
         >
           {sidebar ? (
             <Link to="#" className="menu-bars" onClick={toggleSidebar}>
@@ -100,7 +118,7 @@ function Navbar({ onCityClick }) {
               src={Logo}
               alt="myRental logo"
               className={`default-logo ${
-                isHomepage && hideLogo ? "hidden" : ""
+                isTheRightPage && hideLogo ? "hidden" : ""
               }`}
             />
           )}

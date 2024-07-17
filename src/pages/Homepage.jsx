@@ -1,42 +1,20 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar/index.jsx";
 import Carousel from "../components/Carousel/Carousel.jsx";
-import ElementsList from "../components/ElementsList/index.jsx";
 
 function Homepage() {
-  const [selectedCity, setSelectedCity] = useState("");
-  const [elements, setElements] = useState([]);
-
-  const handleCityClick = (city) => {
-    setSelectedCity(city);
-  };
-
-  /* useEffect(() => {
-    fetch("./src/assets/project-data.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setElements(data.results || []);
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  }, []); */
-
   return (
     <>
-      <Navbar onCityClick={handleCityClick} />
-      {!selectedCity && <Carousel />}
-      <ElementsList elements={elements} />
-      {selectedCity && (
-        <div className="city-content">
-          <h1>{selectedCity}</h1>
-        </div>
-      )}
+      <Navbar />
+      <Carousel />
+      <p className="home-paragraph">
+        Welcome to myRental, your premier destination for finding the perfect
+        rental apartment in Berlin, Madrid, and Paris. Our mission is to make
+        your apartment search effortless, providing you with a curated selection
+        of the finest properties in these vibrant cities. Whether you are
+        relocating for work, study, or simply seeking a new adventure, myRental
+        offers a diverse range of options tailored to meet your needs.
+      </p>
     </>
   );
 }

@@ -8,6 +8,21 @@
   list-style-type: none;
 }
 
-.sidebar-links a {
+.sidebar-links {
+  color: var(--MAINCOLOR);
   text-decoration: none;
+}
+
+.sidebar-links:hover {
+  color: var(--BGCOLOR);
+}
+
+li {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+li:first-child {
+  color: var(--BGCOLOR);
+  font-size: 20px;
 }

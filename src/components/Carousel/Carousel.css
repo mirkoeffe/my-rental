@@ -35,3 +35,15 @@ body {
   height: 297px;
   object-fit: cover;
 }
+
+@media only screen and (max-width: 1024px) {
+  .swiper {
+    width: 360px;
+    height: 180px;
+  }
+
+  .swiper-slide img {
+    width: 360px;
+    height: 180px;
+  }
+}

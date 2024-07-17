@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ElementList from "../components/ElementsList/index.jsx";
 import Navbar from "../components/Navbar/index.jsx";
 import "../App.css";
@@ -25,7 +26,9 @@ function Rentals() {
   return (
     <div className="rentals">
       <Navbar />
-      <ElementList elements={elements} />
+      <Link to="/detail/:id">
+        <ElementList elements={elements} />
+      </Link>
     </div>
   );
 }

@@ -5,6 +5,7 @@
 
 .element-item {
   border: 1px solid #ccc;
+  border-radius: 6px;
   padding: 20px;
   margin: 20px auto 50px auto;
   max-width: 600px;
