@@ -1,14 +1,33 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import data from "../assets/project-data.json";
 import "../App.css";
-import Navbar from "../components/Navbar/index.jsx";
 
 const FilteredElements = () => {
   const { city } = useParams();
-  const filteredData = data.results.filter(
-    (item) => item.city.toLowerCase() === city.toLowerCase()
-  );
+  const navigate = useNavigate();
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    const savedData =
+      JSON.parse(localStorage.getItem("properties")) || data.results;
+    const cityFilteredData = savedData.filter(
+      (item) => item.city.toLowerCase() === city.toLowerCase()
+    );
+    setFilteredData(cityFilteredData);
+  }, [city]);
+
+  const handleEditClick = (id) => {
+    navigate(`/edit/${id}`);
+  };
+
+  const handleDeleteClick = (id) => {
+    const updatedData = filteredData.filter((item) => item.id !== id);
+    setFilteredData(updatedData);
+    const savedData = JSON.parse(localStorage.getItem("properties")) || [];
+    const updatedSavedData = savedData.filter((item) => item.id !== id);
+    localStorage.setItem("properties", JSON.stringify(updatedSavedData));
+  };
 
   return (
     <div>
@@ -18,21 +37,18 @@ const FilteredElements = () => {
       <div className="filtered-body">
         {filteredData.length > 0 ? (
           filteredData.map((item) => (
-            <Link
-              key={item.id}
-              to={`/detail/${item.id}`}
-              className="filtered-item-link"
-            >
-              <div className="filtered-item">
-                <img src={item.picture_url.url} alt={item.name} />
-                <div>
-                  <h2>{item.name}</h2>
-                  <p>{item.description}</p>
-                  <br />
-                  <p>{item.price} € per night</p>
-                </div>
+            <div key={item.id} className="filtered-item">
+              <img src={item.picture_url.url} alt={item.name} />
+              <div>
+                <h2>{item.name}</h2>
+                <p>{item.description}</p>
+                <br />
+                <p>{item.accomodates}</p>
+                <p>{item.price} € per night</p>
               </div>
-            </Link>
+              <button onClick={() => handleEditClick(item.id)}>EDIT</button>
+              <button onClick={() => handleDeleteClick(item.id)}>DELETE</button>
+            </div>
           ))
         ) : (
           <p>No properties found in {city}</p>

@@ -7,6 +7,8 @@ import Rentals from "./pages/Rentals";
 import Footer from "./components/Footer/index.jsx";
 import FilteredElements from "./pages/FilteredElements";
 import DetailedPage from "./pages/DetailedPage";
+import EditForm from "./pages/EditForm";
+import AddForm from "./pages/AddForm";
 
 import "./App.css";
 import Navbar from "./components/Navbar/index.jsx";
@@ -20,6 +22,8 @@ function App() {
     { path: "*", element: <h1>Page not found</h1> },
     { path: "/filter/:city", element: <FilteredElements /> },
     { path: "/detail/:id", element: <DetailedPage /> },
+    { path: "/edit/:id", element: <EditForm /> },
+    { path: "/add", element: <AddForm /> },
   ];
 
   return (
