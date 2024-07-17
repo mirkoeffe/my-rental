@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import data from "../assets/project-data.json";
 import "../App.css";
 import Navbar from "../components/Navbar/index.jsx";
@@ -12,22 +12,27 @@ const FilteredElements = () => {
 
   return (
     <div>
-      <Navbar />
       <h1 className="filtered-header">
         Properties in {city.charAt(0).toUpperCase() + city.slice(1)}
       </h1>
       <div className="filtered-body">
         {filteredData.length > 0 ? (
           filteredData.map((item) => (
-            <div key={item.id} className="filtered-item">
-              <img src={item.picture_url.url} alt={item.name} />
-              <div>
-                <h2>{item.name}</h2>
-                <p>{item.description}</p>
-                <br />
-                <p>{item.price} € per night</p>
+            <Link
+              key={item.id}
+              to={`/detail/${item.id}`}
+              className="filtered-item-link"
+            >
+              <div className="filtered-item">
+                <img src={item.picture_url.url} alt={item.name} />
+                <div>
+                  <h2>{item.name}</h2>
+                  <p>{item.description}</p>
+                  <br />
+                  <p>{item.price} € per night</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p>No properties found in {city}</p>

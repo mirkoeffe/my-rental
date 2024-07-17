@@ -25,10 +25,25 @@ function Rentals() {
 
   return (
     <div className="rentals">
-      <Navbar />
-      <Link to="/detail/:id">
-        <ElementList elements={elements} />
-      </Link>
+      <div className="elements-list">
+        {elements.map((item) => (
+          <Link
+            key={item.id}
+            to={`/detail/${item.id}`}
+            className="element-item-link"
+          >
+            <div className="element-item">
+              <img src={item.picture_url.url} alt={item.name} />
+              <div className="element-description">
+                <h2>{item.name}</h2>
+                <p>{item.description}</p>
+                <br />
+                <p>{item.price} € per night</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

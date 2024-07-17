@@ -66,6 +66,8 @@
   padding: 1px;
   background-color: var(--MAINCOLOR);
   height: 100px;
+  position: sticky;
+  top: 0;
 }
 
 .menu-bars {
@@ -107,8 +109,11 @@
 
 .nav-buttons.homepage {
   color: var(--BGCOLOR);
+  background-color: var(--SECONDCOLOR);
+  border-radius: 6px;
 }
 
 .nav-buttons.homepage:hover {
   color: var(--SECONDCOLOR);
+  background-color: var(--BGCOLOR);
 }

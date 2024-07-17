@@ -5,7 +5,6 @@ import Carousel from "../components/Carousel/Carousel.jsx";
 function Homepage() {
   return (
     <>
-      <Navbar />
       <Carousel />
       <p className="home-paragraph">
         Welcome to myRental, your premier destination for finding the perfect

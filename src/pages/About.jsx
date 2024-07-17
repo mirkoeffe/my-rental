@@ -5,17 +5,17 @@ import "../App.css";
 function About() {
   return (
     <div className="about-main">
-      <Navbar />
       <h1 className="about-header">myRental</h1>
       <div className="about-main-container">
         <img src={Berlin} alt="Berlin" />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quas
-          sunt exercitationem illo nobis minus, fugiat id, optio, error itaque
-          minima at. Earum ea, maxime, pariatur dicta fuga fugiat dignissimos
-          illo temporibus omnis provident a, veniam facilis beatae ratione
-          voluptate sunt dolorum nam. Harum dignissimos quaerat placeat. Sint,
-          quibusdam deleniti.
+          <strong>myRental</strong>, your premier destination for finding the
+          perfect rental apartment in Berlin, Madrid, and Paris. Our mission is
+          to make your apartment search effortless, providing you with a curated
+          selection of the finest properties in these vibrant cities. Whether
+          you are relocating for work, study, or simply seeking a new adventure,
+          myRental offers a diverse range of options tailored to meet your
+          needs.
         </p>
       </div>
     </div>

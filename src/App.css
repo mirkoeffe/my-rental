@@ -72,12 +72,26 @@ html {
   max-width: 500px;
 }
 
+.filtered-item-link,
+.element-item-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.elements-list {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
 /* RENTALS PAGE */
 
 /* FILTERED PAGE */
 .filtered-body {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
+  margin: 10px auto;
 }
 
 .filtered-header {
@@ -96,4 +110,20 @@ html {
 .filtered-item img {
   max-width: 50%;
   height: auto;
+}
+
+/* TEAM PAGE */
+
+.team-icon {
+  height: 50px;
+  width: auto;
+  margin-right: 10px;
+  background-color: var(--SECONDCOLOR);
+  border-radius: 6px;
+}
+
+.team-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }

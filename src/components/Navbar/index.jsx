@@ -22,7 +22,12 @@ function Navbar({ onCityClick }) {
     }
   };
 
-  const renderButtons = () => {
+  /* const obj = {
+    "/": [{},{}]
+  }
+obj[location.pathname] */
+
+  let renderButtons = () => {
     switch (location.pathname) {
       case "/":
         return (
@@ -33,8 +38,8 @@ function Navbar({ onCityClick }) {
             <Link to="/about">
               <button className="nav-buttons">About</button>
             </Link>
-            <Link to="/contact">
-              <button className="nav-buttons">Contacts</button>
+            <Link to="/team">
+              <button className="nav-buttons">Team</button>
             </Link>
           </>
         );
@@ -47,12 +52,12 @@ function Navbar({ onCityClick }) {
             <Link to="/">
               <button className="nav-buttons homepage">Homepage</button>
             </Link>
-            <Link to="/contact">
-              <button className="nav-buttons">Contacts</button>
+            <Link to="/team">
+              <button className="nav-buttons">Team</button>
             </Link>
           </>
         );
-      case "/contact":
+      case "/team":
         return (
           <>
             <Link to="/rentals">
@@ -75,25 +80,8 @@ function Navbar({ onCityClick }) {
             <Link to="/about">
               <button className="nav-buttons">About</button>
             </Link>
-            <Link to="/contact">
-              <button className="nav-buttons">Contacts</button>
-            </Link>
-          </>
-        );
-      case "/filter/:city":
-        return (
-          <>
-            <Link to="/">
-              <button className="nav-buttons homepage">Homepage</button>
-            </Link>
-            <Link to="/rentals">
-              <button className="nav-buttons">Rentals</button>
-            </Link>
-            <Link to="/about">
-              <button className="nav-buttons">About</button>
-            </Link>
-            <Link to="/contact">
-              <button className="nav-buttons">Contacts</button>
+            <Link to="/team">
+              <button className="nav-buttons">Team</button>
             </Link>
           </>
         );
@@ -101,6 +89,25 @@ function Navbar({ onCityClick }) {
         return null;
     }
   };
+
+  if (!renderButtons()) {
+    renderButtons = () => (
+      <>
+        <Link to="/">
+          <button className="nav-buttons homepage">Homepage</button>
+        </Link>
+        <Link to="/rentals">
+          <button className="nav-buttons">Rentals</button>
+        </Link>
+        <Link to="/about">
+          <button className="nav-buttons">About</button>
+        </Link>
+        <Link to="/team">
+          <button className="nav-buttons">Team</button>
+        </Link>
+      </>
+    );
+  }
 
   return (
     <>
