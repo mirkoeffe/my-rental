@@ -46,8 +46,18 @@ const FilteredElements = () => {
                   </div>
                 </div>
               </Link>
-              <button onClick={() => handleEditClick(item.id)}>EDIT</button>
-              <button onClick={() => handleDeleteClick(item.id)}>DELETE</button>
+              <button
+                className="items-buttons"
+                onClick={() => handleEditClick(item.id)}
+              >
+                EDIT
+              </button>
+              <button
+                className="items-buttons"
+                onClick={() => handleDeleteClick(item.id)}
+              >
+                DELETE
+              </button>
             </div>
           ))
         ) : (

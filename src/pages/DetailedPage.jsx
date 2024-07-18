@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import data from "../assets/project-data.json";
 import "../App.css";
-import Navbar from "../components/Navbar/index.jsx";
 
 const DetailedPage = () => {
   const { id } = useParams();
@@ -21,13 +20,14 @@ const DetailedPage = () => {
     <div>
       <div className="detailed-page">
         <img src={item.picture_url.url} alt={item.name} />
-        <div>
+        <div className="detailed-item">
           <h2>{item.name}</h2>
-          <p>{item.description}</p>
+          <p className="detailed-description">{item.description}</p>
           <br />
           <p>{item.price} € per night</p>
         </div>
       </div>
+      <br />
     </div>
   );
 };

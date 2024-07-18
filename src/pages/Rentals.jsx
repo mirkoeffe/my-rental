@@ -45,24 +45,39 @@ function Rentals() {
 
   return (
     <div className="rentals">
-      <button onClick={handleAddClick}>Add New Element</button>
+      <button className="add-element-button" onClick={handleAddClick}>
+        Add New Element
+      </button>
       <div className="elements-list">
         {elements.map((item) => (
           <div key={item.id} className="element-item">
             <Link to={`/detail/${item.id}`} className="element-item-link">
-              <img src={item.picture_url.url} alt={item.name} />
-              <div className="element-description">
-                <h2>{item.name}</h2>
-                <p>{item.description}</p>
-                <br />
-                <p>{item.price} € per night</p>
+              <div>
+                <img src={item.picture_url.url} alt={item.name} />
+                <div className="element-description">
+                  <h2>{item.name}</h2>
+                  <p>{item.description}</p>
+                  <br />
+                  <p>{item.price} € per night</p>
+                </div>
               </div>
             </Link>
-            <button onClick={() => handleEditClick(item.id)}>EDIT</button>
-            <button onClick={() => handleDeleteClick(item.id)}>DELETE</button>
+            <button
+              className="items-buttons"
+              onClick={() => handleEditClick(item.id)}
+            >
+              EDIT
+            </button>
+            <button
+              className="items-buttons"
+              onClick={() => handleDeleteClick(item.id)}
+            >
+              DELETE
+            </button>
           </div>
         ))}
       </div>
+      <br />
     </div>
   );
 }

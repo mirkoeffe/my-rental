@@ -4,13 +4,15 @@ html {
   background-color: var(--BGCOLOR);
 }
 
-#root {
-  text-align: center;
-  background-color: var(--BGCOLOR);
-
+:root {
   --BGCOLOR: #e4e2dd;
   --MAINCOLOR: #db4a2b;
   --SECONDCOLOR: #232323;
+}
+
+#root {
+  text-align: center;
+  background-color: var(--BGCOLOR);
   font-family: "Archivo", sans-serif;
   font-optical-sizing: auto;
   height: 100%;
@@ -72,26 +74,6 @@ html {
   max-width: 500px;
 }
 
-.element-list {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-.element-item {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 20px;
-  margin: 20px auto 50px auto;
-  max-width: 600px;
-}
-
-.element-item img {
-  max-width: 50%;
-  height: auto;
-}
-
 .filtered-item-link,
 .element-item-link {
   text-decoration: none;
@@ -99,7 +81,31 @@ html {
   cursor: pointer;
 }
 
-/* RENTALS PAGE */
+.add-element-button,
+.items-buttons {
+  background-color: var(--MAINCOLOR);
+  color: var(--SECONDCOLOR);
+  border: none;
+  height: 25px;
+  width: 120px;
+  border-radius: 6px;
+  box-shadow: 3px 3px var(--SECONDCOLOR);
+}
+
+.add-element-button:hover,
+.items-buttons:hover {
+  background-color: var(--SECONDCOLOR);
+  color: var(--BGCOLOR);
+  box-shadow: 3px 3px var(--BGCOLOR);
+}
+
+.add-element-button {
+  margin-top: 40px;
+}
+
+.items-buttons {
+  margin: 5px;
+}
 
 /* FILTERED PAGE */
 .filtered-body {
@@ -127,6 +133,29 @@ html {
   height: auto;
 }
 
+/* RENTALS PAGE */
+
+.element-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.element-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 50px auto;
+  max-width: 600px;
+  bottom: 50px;
+}
+
+.element-item img {
+  max-width: 50%;
+  height: auto;
+}
+
 /* TEAM PAGE */
 
 .team-icon {
@@ -144,3 +173,30 @@ html {
 }
 
 /* DETAILED PAGE */
+
+.detailed-page {
+  margin: 20px auto;
+  max-width: 800px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.detailed-item {
+  margin: 20px auto;
+}
+
+.detailed-page img {
+  max-width: 80%;
+  margin: 20px;
+}
+
+.detailed-description {
+  line-height: 1.5;
+  max-width: 70%;
+  text-align: justify;
+  margin: 10px auto;
+}
+
+.detailed-page p:last-child {
+  margin-bottom: 50px;
+}
