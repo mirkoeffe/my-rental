@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useElements } from "../context/ElementsContext";
 import { v4 as uuidv4 } from "uuid";
-import "../App.css";
-import Button from "../components/Button/index";
 
 const AddForm = () => {
   const navigate = useNavigate();
@@ -34,9 +32,9 @@ const AddForm = () => {
       return;
     }
     const newId = uuidv4();
-    const itemWithId = { ...newItem, id: newId };
+    const itemWithId = { ...newItem, id: newId }; // this assigns a unique id to the newly saved item
     addElement(itemWithId);
-    navigate("/rentals");
+    navigate("/rentals", { state: { newItem: itemWithId } }); // Navigate back to the rentals page
   };
 
   const handleChange = (e) => {
@@ -117,7 +115,9 @@ const AddForm = () => {
             onChange={handleChange}
           />
         </label>
-        <Button onClick={handleSaveClick}>Save</Button>
+        <button type="button" onClick={handleSaveClick}>
+          Save
+        </button>
       </form>
     </div>
   );

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { useContext, createContext, useState } from "react";
 import data from "../assets/project-data.json";
 
 const ElementsContext = createContext();
@@ -17,16 +17,8 @@ export const ElementsProvider = ({ children }) => {
     setElements((prevElements) => [...prevElements, newItem]);
   };
 
-  const updateElement = (updatedItem) => {
-    setElements((prevElements) =>
-      prevElements.map((item) =>
-        item.id === updatedItem.id ? updatedItem : item
-      )
-    );
-  };
-
   return (
-    <ElementsContext.Provider value={{ elements, addElement, updateElement }}>
+    <ElementsContext.Provider value={{ elements, setElements, addElement }}>
       {children}
     </ElementsContext.Provider>
   );

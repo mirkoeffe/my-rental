@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../App.css";
 import { useElements } from "../context/ElementsContext.jsx";
-import Button from "../components/Button/index.jsx";
 
 function Rentals() {
   const { elements, setElements } = useElements();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    console.log("Rentals component mounted");
+    fetch("./src/assets/project-data.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setElements(data.results || []);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
   }, []);
-
-  useEffect(() => {
-    console.log("Elements updated in Rentals:", elements);
-  }, [elements]);
 
   const handleEditClick = (id) => {
     navigate(`/edit/${id}`);
@@ -31,29 +39,39 @@ function Rentals() {
 
   return (
     <div className="rentals">
-      <div>
-        <Button onClick={handleAddClick}>Add New Element</Button>
-        <div className="elements-list">
-          {elements.map((item) => (
-            <div key={item.id} className="element-item">
-              <Link to={`/detail/${item.id}`} className="element-item-link">
-                <div>
-                  <img src={item.picture_url.url} alt={item.name} />
-                  <div className="element-description">
-                    <h2>{item.name}</h2>
-                    <p>{item.description}</p>
-                    <p>Accomodates: {item.accommodates}</p>
-                    <p>{item.price} € per night</p>
-                  </div>
+      <button className="add-element-button" onClick={handleAddClick}>
+        Add New Element
+      </button>
+      <div className="elements-list">
+        {elements.map((item) => (
+          <div key={item.id} className="element-item">
+            <Link to={`/detail/${item.id}`} className="element-item-link">
+              <div>
+                <img src={item.picture_url.url} alt={item.name} />
+                <div className="element-description">
+                  <h2>{item.name}</h2>
+                  <p>{item.description}</p>
+                  <br />
+                  <p>{item.price} € per night</p>
                 </div>
-              </Link>
-              <Button onClick={() => handleEditClick(item.id)}>EDIT</Button>
-              <Button onClick={() => handleDeleteClick(item.id)}>DELETE</Button>
-            </div>
-          ))}
-        </div>
-        <br />
+              </div>
+            </Link>
+            <button
+              className="items-buttons"
+              onClick={() => handleEditClick(item.id)}
+            >
+              EDIT
+            </button>
+            <button
+              className="items-buttons"
+              onClick={() => handleDeleteClick(item.id)}
+            >
+              DELETE
+            </button>
+          </div>
+        ))}
       </div>
+      <br />
     </div>
   );
 }
