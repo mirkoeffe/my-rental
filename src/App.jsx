@@ -9,6 +9,7 @@ import FilteredElements from "./pages/FilteredElements";
 import DetailedPage from "./pages/DetailedPage";
 import EditForm from "./pages/EditForm";
 import AddForm from "./pages/AddForm";
+import NotFound from "./pages/NotFound";
 
 import "./App.css";
 import Navbar from "./components/Navbar/index.jsx";
@@ -20,7 +21,7 @@ function App() {
     { path: "/team", element: <Team /> },
     { path: "/about", element: <About /> },
     { path: "/rentals", element: <Rentals /> },
-    { path: "*", element: <h1>Page not found</h1> },
+    { path: "*", element: <NotFound /> },
     { path: "/filter/:city", element: <FilteredElements /> },
     { path: "/detail/:id", element: <DetailedPage /> },
     { path: "/edit/:id", element: <EditForm /> },

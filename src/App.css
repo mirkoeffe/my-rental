@@ -116,7 +116,7 @@ html {
 }
 
 .filtered-header {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .filtered-item {
@@ -134,6 +134,10 @@ html {
 }
 
 /* RENTALS PAGE */
+
+.rentals > div {
+  margin-top: 40px;
+}
 
 .element-list {
   display: flex;
@@ -174,8 +178,13 @@ html {
 
 /* DETAILED PAGE */
 
+.detailed-double {
+  margin-bottom: 20px;
+}
+
 .detailed-page {
-  margin: 20px auto;
+  padding: 20px;
+  margin: 50px auto;
   max-width: 800px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -199,4 +208,8 @@ html {
 
 .detailed-page p:last-child {
   margin-bottom: 50px;
+}
+
+.edit-form label {
+  margin: 5px;
 }

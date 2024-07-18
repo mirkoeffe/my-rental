@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar/index.jsx";
 import Berlin from "../assets/berlin.jpeg";
 import "../App.css";
 

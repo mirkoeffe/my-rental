@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useElements } from "../context/ElementsContext";
 import "../App.css";
+import Button from "../components/Button/index";
 
 const FilteredElements = () => {
   const { city } = useParams();
@@ -40,24 +41,13 @@ const FilteredElements = () => {
                   <div>
                     <h2>{item.name}</h2>
                     <p>{item.description}</p>
-                    <br />
-                    <p>{item.accomodates}</p>
+                    <p>Accomodates: {item.accommodates}</p>
                     <p>{item.price} € per night</p>
                   </div>
                 </div>
               </Link>
-              <button
-                className="items-buttons"
-                onClick={() => handleEditClick(item.id)}
-              >
-                EDIT
-              </button>
-              <button
-                className="items-buttons"
-                onClick={() => handleDeleteClick(item.id)}
-              >
-                DELETE
-              </button>
+              <Button onClick={() => handleEditClick(item.id)}>EDIT</Button>
+              <Button onClick={() => handleDeleteClick(item.id)}>DELETE</Button>
             </div>
           ))
         ) : (

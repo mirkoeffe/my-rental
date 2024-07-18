@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useElements } from "../context/ElementsContext";
+import "../App.css";
+import Button from "../components/Button/index";
 
 const EditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [editItem, setEditItem] = useState(null);
-  const { elements, setElements } = useElements();
+  const { elements, updateElement } = useElements();
 
   useEffect(() => {
     const itemToEdit = elements.find((item) => item.id === id);
-    if (itemToEdit) {
-      setEditItem(itemToEdit);
+    if (!itemToEdit) {
+      navigate("/*");
     } else {
-      setEditItem(null);
+      setEditItem(itemToEdit);
     }
-  }, [id, elements]);
+  }, [id, elements, navigate]);
 
   const handleSaveClick = () => {
-    const updatedData = elements.map((item) =>
-      item.id === editItem.id ? editItem : item
-    );
-    setElements(updatedData);
-    navigate(-1);
+    updateElement(editItem);
+    navigate("/rentals");
   };
 
   const handleChange = (e) => {
@@ -30,7 +29,9 @@ const EditForm = () => {
     setEditItem((prevItem) => ({ ...prevItem, [name]: value }));
   };
 
-  if (!editItem) return <div>Loading...</div>;
+  if (!editItem) {
+    return null;
+  }
 
   return (
     <div className="edit-form">
@@ -41,7 +42,7 @@ const EditForm = () => {
           <input
             type="text"
             name="name"
-            value={editItem.name || ""}
+            value={editItem.name}
             onChange={handleChange}
           />
         </label>
@@ -50,7 +51,7 @@ const EditForm = () => {
           <input
             type="text"
             name="description"
-            value={editItem.description || ""}
+            value={editItem.description}
             onChange={handleChange}
           />
         </label>
@@ -59,13 +60,11 @@ const EditForm = () => {
           <input
             type="number"
             name="price"
-            value={editItem.price || ""}
+            value={editItem.price}
             onChange={handleChange}
           />
         </label>
-        <button type="button" onClick={handleSaveClick}>
-          Save
-        </button>
+        <Button onClick={handleSaveClick}>Save</Button>
       </form>
     </div>
   );
