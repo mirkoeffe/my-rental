@@ -24,12 +24,6 @@ function Rentals() {
       });
   }, []);
 
-  useEffect(() => {
-    if (location.state && location.state.newItem) {
-      setElements((prevElements) => [...prevElements, location.state.newItem]);
-    }
-  }, [location.state, setElements]);
-
   const handleEditClick = (id) => {
     navigate(`/edit/${id}`);
   };

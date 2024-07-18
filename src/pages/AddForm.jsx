@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useElements } from "../context/ElementsContext";
+import { v4 as uuidv4 } from "uuid";
 
 const AddForm = () => {
   const navigate = useNavigate();
+  const { addElement } = useElements();
   const [newItem, setNewItem] = useState({
     id: "",
     name: "",
@@ -13,10 +16,25 @@ const AddForm = () => {
     country: "",
     neighbourhood: "",
   });
+  const [error, setError] = useState("");
 
   const handleSaveClick = () => {
-    newItem.id = new Date().getTime().toString(); // this assigns a unique id to the newly saved item
-    navigate("/rentals", { state: { newItem } }); // Navigate back to the rentals page
+    if (
+      !newItem.name ||
+      !newItem.description ||
+      !newItem.price ||
+      !newItem.picture_url.url ||
+      !newItem.city ||
+      !newItem.country ||
+      !newItem.neighbourhood
+    ) {
+      setError("All fields are required");
+      return;
+    }
+    const newId = uuidv4();
+    const itemWithId = { ...newItem, id: newId }; // this assigns a unique id to the newly saved item
+    addElement(itemWithId);
+    navigate("/rentals", { state: { newItem: itemWithId } }); // Navigate back to the rentals page
   };
 
   const handleChange = (e) => {
@@ -27,6 +45,7 @@ const AddForm = () => {
   return (
     <div className="edit-form">
       <h2>Add New Property</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form>
         <label>
           Name:
