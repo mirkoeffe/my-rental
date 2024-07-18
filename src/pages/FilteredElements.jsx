@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import data from "../assets/project-data.json";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { useElements } from "../context/ElementsContext";
 import "../App.css";
 
 const FilteredElements = () => {
   const { city } = useParams();
   const navigate = useNavigate();
   const [filteredData, setFilteredData] = useState([]);
+  const { elements, setElements } = useElements();
 
   useEffect(() => {
-    const savedData =
-      JSON.parse(localStorage.getItem("properties")) || data.results;
-    const cityFilteredData = savedData.filter(
+    const cityFilteredData = elements.filter(
       (item) => item.city.toLowerCase() === city.toLowerCase()
     );
     setFilteredData(cityFilteredData);
-  }, [city]);
+  }, [city, elements]);
 
   const handleEditClick = (id) => {
     navigate(`/edit/${id}`);
   };
 
   const handleDeleteClick = (id) => {
-    const updatedData = filteredData.filter((item) => item.id !== id);
-    setFilteredData(updatedData);
-    const savedData = JSON.parse(localStorage.getItem("properties")) || [];
-    const updatedSavedData = savedData.filter((item) => item.id !== id);
-    localStorage.setItem("properties", JSON.stringify(updatedSavedData));
+    const updatedData = elements.filter((item) => item.id !== id);
+    setElements(updatedData);
   };
 
   return (
@@ -38,14 +34,18 @@ const FilteredElements = () => {
         {filteredData.length > 0 ? (
           filteredData.map((item) => (
             <div key={item.id} className="filtered-item">
-              <img src={item.picture_url.url} alt={item.name} />
-              <div>
-                <h2>{item.name}</h2>
-                <p>{item.description}</p>
-                <br />
-                <p>{item.accomodates}</p>
-                <p>{item.price} € per night</p>
-              </div>
+              <Link to={`/detail/${item.id}`} className="filtered-item-link">
+                <div>
+                  <img src={item.picture_url.url} alt={item.name} />
+                  <div>
+                    <h2>{item.name}</h2>
+                    <p>{item.description}</p>
+                    <br />
+                    <p>{item.accomodates}</p>
+                    <p>{item.price} € per night</p>
+                  </div>
+                </div>
+              </Link>
               <button onClick={() => handleEditClick(item.id)}>EDIT</button>
               <button onClick={() => handleDeleteClick(item.id)}>DELETE</button>
             </div>

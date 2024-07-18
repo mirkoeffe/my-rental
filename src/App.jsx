@@ -12,6 +12,7 @@ import AddForm from "./pages/AddForm";
 
 import "./App.css";
 import Navbar from "./components/Navbar/index.jsx";
+import { ElementsProvider } from "./context/ElementsContext.jsx";
 
 function App() {
   const appRoutes = [
@@ -29,13 +30,19 @@ function App() {
   return (
     <>
       <div className="pages">
-        <Navbar />
-        <Routes>
-          {appRoutes.map((route) => (
-            <Route key={route.path} path={route.path} element={route.element} />
-          ))}
-        </Routes>
-        <Footer />
+        <ElementsProvider>
+          <Navbar />
+          <Routes>
+            {appRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+          </Routes>
+          <Footer />
+        </ElementsProvider>
       </div>
     </>
   );

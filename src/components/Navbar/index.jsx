@@ -22,11 +22,6 @@ function Navbar({ onCityClick }) {
     }
   };
 
-  /* const obj = {
-    "/": [{},{}]
-  }
-obj[location.pathname] */
-
   let renderButtons = () => {
     switch (location.pathname) {
       case "/":

@@ -1,4 +1,4 @@
-import "./styles.css";
+/* import "./styles.css";
 
 function ElementsList({ elements = [] }) {
   return (
@@ -19,3 +19,4 @@ function ElementsList({ elements = [] }) {
 }
 
 export default ElementsList;
+ */

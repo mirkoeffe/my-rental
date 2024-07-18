@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import data from "../assets/project-data.json";
+import { useElements } from "../context/ElementsContext";
 
 const EditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [editItem, setEditItem] = useState(null);
+  const { elements, setElements } = useElements();
 
   useEffect(() => {
-    const savedData =
-      JSON.parse(localStorage.getItem("properties")) || data.results;
-    const itemToEdit = savedData.find((item) => item.id === id);
-    setEditItem(itemToEdit);
-  }, [id]);
+    const itemToEdit = elements.find((item) => item.id === id);
+    if (itemToEdit) {
+      setEditItem(itemToEdit);
+    } else {
+      setEditItem(null);
+    }
+  }, [id, elements]);
 
   const handleSaveClick = () => {
-    const savedData =
-      JSON.parse(localStorage.getItem("properties")) || data.results;
-    const updatedData = savedData.map((item) =>
+    const updatedData = elements.map((item) =>
       item.id === editItem.id ? editItem : item
     );
-    localStorage.setItem("properties", JSON.stringify(updatedData));
+    setElements(updatedData);
     navigate(-1);
   };
 
@@ -40,7 +41,7 @@ const EditForm = () => {
           <input
             type="text"
             name="name"
-            value={editItem.name}
+            value={editItem.name || ""}
             onChange={handleChange}
           />
         </label>
@@ -49,7 +50,7 @@ const EditForm = () => {
           <input
             type="text"
             name="description"
-            value={editItem.description}
+            value={editItem.description || ""}
             onChange={handleChange}
           />
         </label>
@@ -58,7 +59,7 @@ const EditForm = () => {
           <input
             type="number"
             name="price"
-            value={editItem.price}
+            value={editItem.price || ""}
             onChange={handleChange}
           />
         </label>

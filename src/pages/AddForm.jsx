@@ -15,11 +15,8 @@ const AddForm = () => {
   });
 
   const handleSaveClick = () => {
-    const savedData = JSON.parse(localStorage.getItem("properties")) || [];
-    newItem.id = new Date().getTime().toString(); // Assign a unique id
-    const updatedData = [...savedData, newItem];
-    localStorage.setItem("properties", JSON.stringify(updatedData));
-    navigate("/rentals", { state: { newItem } }); // Navigate back to the rentals page with state
+    newItem.id = new Date().getTime().toString(); // this assigns a unique id to the newly saved item
+    navigate("/rentals", { state: { newItem } }); // Navigate back to the rentals page
   };
 
   const handleChange = (e) => {

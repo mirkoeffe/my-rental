@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import ElementList from "../components/ElementsList/index.jsx";
 import "../App.css";
+import { useElements } from "../context/ElementsContext.jsx";
 
 function Rentals() {
-  const [elements, setElements] = useState([]);
+  const { elements, setElements } = useElements();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,7 +18,6 @@ function Rentals() {
       })
       .then((data) => {
         setElements(data.results || []);
-        localStorage.setItem("properties", JSON.stringify(data.results || []));
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -29,7 +28,7 @@ function Rentals() {
     if (location.state && location.state.newItem) {
       setElements((prevElements) => [...prevElements, location.state.newItem]);
     }
-  }, [location.state]);
+  }, [location.state, setElements]);
 
   const handleEditClick = (id) => {
     navigate(`/edit/${id}`);
@@ -38,7 +37,6 @@ function Rentals() {
   const handleDeleteClick = (id) => {
     const updatedElements = elements.filter((item) => item.id !== id);
     setElements(updatedElements);
-    localStorage.setItem("properties", JSON.stringify(updatedElements));
   };
 
   const handleAddClick = () => {

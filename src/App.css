@@ -72,16 +72,31 @@ html {
   max-width: 500px;
 }
 
+.element-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.element-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px auto 50px auto;
+  max-width: 600px;
+}
+
+.element-item img {
+  max-width: 50%;
+  height: auto;
+}
+
 .filtered-item-link,
 .element-item-link {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-}
-
-.elements-list {
-  max-width: 600px;
-  margin: 20px auto;
 }
 
 /* RENTALS PAGE */
@@ -127,3 +142,5 @@ html {
   height: 100px;
   object-fit: cover;
 }
+
+/* DETAILED PAGE */
