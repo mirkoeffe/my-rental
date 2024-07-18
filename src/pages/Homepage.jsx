@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar/index.jsx";
 import Carousel from "../components/Carousel/Carousel.jsx";
 
 function Homepage() {

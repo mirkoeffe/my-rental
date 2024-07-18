@@ -1,28 +1,21 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import { useElements } from "../context/ElementsContext.jsx";
+import Button from "../components/Button/index.jsx";
+import Navbar from "../components/Navbar/index.jsx";
 
 function Rentals() {
   const { elements, setElements } = useElements();
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    fetch("./src/assets/project-data.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setElements(data.results || []);
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
+    console.log("Rentals component mounted");
   }, []);
+
+  useEffect(() => {
+    console.log("Elements updated in Rentals:", elements);
+  }, [elements]);
 
   const handleEditClick = (id) => {
     navigate(`/edit/${id}`);
@@ -39,9 +32,9 @@ function Rentals() {
 
   return (
     <div className="rentals">
-      <button className="add-element-button" onClick={handleAddClick}>
-        Add New Element
-      </button>
+      <div className="add-button">
+        <Button onClick={handleAddClick}>Add New Element</Button>
+      </div>
       <div className="elements-list">
         {elements.map((item) => (
           <div key={item.id} className="element-item">
@@ -51,23 +44,12 @@ function Rentals() {
                 <div className="element-description">
                   <h2>{item.name}</h2>
                   <p>{item.description}</p>
-                  <br />
                   <p>{item.price} € per night</p>
                 </div>
               </div>
             </Link>
-            <button
-              className="items-buttons"
-              onClick={() => handleEditClick(item.id)}
-            >
-              EDIT
-            </button>
-            <button
-              className="items-buttons"
-              onClick={() => handleDeleteClick(item.id)}
-            >
-              DELETE
-            </button>
+            <Button onClick={() => handleEditClick(item.id)}>EDIT</Button>
+            <Button onClick={() => handleDeleteClick(item.id)}>DELETE</Button>
           </div>
         ))}
       </div>
