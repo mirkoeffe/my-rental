@@ -34,6 +34,7 @@ myRental is a web application designed to help users find rental apartments in B
 - Add advanced filtering options (price range, number of bedrooms, etc.).
 - Implement a mobile-friendly layout.
 - Navbar to be fixed
+- Sidebar must be taken out of the Navbar
 
 ## Installation
 
