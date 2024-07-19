@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import { useElements } from "../context/ElementsContext.jsx";
 import Button from "../components/Button/index.jsx";
-import Navbar from "../components/Navbar/index.jsx";
 
 function Rentals() {
   const { elements, setElements } = useElements();
@@ -44,6 +43,8 @@ function Rentals() {
                 <div className="element-description">
                   <h2>{item.name}</h2>
                   <p>{item.description}</p>
+                  <br />
+                  <p>Accomodation: {item.accommodates}</p>
                   <p>{item.price} € per night</p>
                 </div>
               </div>

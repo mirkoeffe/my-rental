@@ -41,7 +41,8 @@ const FilteredElements = () => {
                   <div>
                     <h2>{item.name}</h2>
                     <p>{item.description}</p>
-                    <p>{item.accommodates}</p>
+                    <br />
+                    <p>Accomodation: {item.accommodates}</p>
                     <p>{item.price} € per night</p>
                   </div>
                 </div>

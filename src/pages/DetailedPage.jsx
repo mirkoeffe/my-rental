@@ -29,6 +29,8 @@ const DetailedPage = () => {
         <div className="detailed-item">
           <h2>{item.name}</h2>
           <p className="detailed-description">{item.description}</p>
+          <br />
+          <p>Accomodation: {item.accommodates}</p>
           <p>{item.price} € per night</p>
         </div>
       </div>
