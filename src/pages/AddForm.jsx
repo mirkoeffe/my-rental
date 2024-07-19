@@ -38,7 +38,7 @@ const AddForm = () => {
     addElement(itemWithId);
     navigate("/rentals");
   };
-
+  // this renders everything again
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewItem((prevItem) => ({ ...prevItem, [name]: value }));
@@ -52,6 +52,7 @@ const AddForm = () => {
         <label>
           Name:
           <input
+            className="form-inputs"
             type="text"
             name="name"
             value={newItem.name}
@@ -61,6 +62,7 @@ const AddForm = () => {
         <label>
           Description:
           <input
+            className="form-inputs"
             type="text"
             name="description"
             value={newItem.description}
@@ -70,6 +72,7 @@ const AddForm = () => {
         <label>
           Price:
           <input
+            className="form-inputs"
             type="number"
             name="price"
             value={newItem.price}
@@ -79,6 +82,7 @@ const AddForm = () => {
         <label>
           Image URL:
           <input
+            className="form-inputs"
             type="text"
             name="picture_url"
             value={newItem.picture_url.url}
@@ -93,6 +97,7 @@ const AddForm = () => {
         <label>
           City:
           <input
+            className="form-inputs"
             type="text"
             name="city"
             value={newItem.city}
@@ -102,6 +107,7 @@ const AddForm = () => {
         <label>
           Country:
           <input
+            className="form-inputs"
             type="text"
             name="country"
             value={newItem.country}
@@ -111,9 +117,20 @@ const AddForm = () => {
         <label>
           Neighbourhood:
           <input
+            className="form-inputs"
             type="text"
             name="neighbourhood"
             value={newItem.neighbourhood}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Accomodation:
+          <input
+            className="form-inputs"
+            type="number"
+            name="accomodation"
+            value={newItem.accomodation}
             onChange={handleChange}
           />
         </label>

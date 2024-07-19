@@ -204,3 +204,7 @@ html {
 .detailed-page p:last-child {
   margin-bottom: 50px;
 }
+
+.form-inputs {
+  margin: 10px;
+}

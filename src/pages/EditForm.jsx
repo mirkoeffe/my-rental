@@ -105,6 +105,15 @@ const EditForm = () => {
             onChange={handleChange}
           />
         </label>
+        <label>
+          Accomodation:
+          <input
+            type="number"
+            name="accomodation"
+            value={editItem.accomodation}
+            onChange={handleChange}
+          />
+        </label>
         <Button onClick={handleSaveClick}>Save</Button>
       </form>
     </div>

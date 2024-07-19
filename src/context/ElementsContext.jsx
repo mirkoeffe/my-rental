@@ -26,7 +26,9 @@ export const ElementsProvider = ({ children }) => {
   };
 
   return (
-    <ElementsContext.Provider value={{ elements, addElement, updateElement }}>
+    <ElementsContext.Provider
+      value={{ elements, addElement, setElements, updateElement }}
+    >
       {children}
     </ElementsContext.Provider>
   );
